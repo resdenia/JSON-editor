@@ -1211,8 +1211,9 @@
 			JSONEditor.defaults.options.disable_array_delete_last_row = true;
 			JSONEditor.defaults.options.array_controls_top = true;
 			JSONEditor.defaults.options.disable_properties = true;
+			JSONEditor.defaults.options.disable_collapse = true;
 
-			// disable_properties
+			// disable_collapse
 
 			// var refreshBooleanOptions = function (no_reload) {
 			// 	var boolean_options = document.getElementById('boolean_options').children;
@@ -1252,7 +1253,7 @@
 			setIconlib((window.location.href.match(/[?&]iconlib=([^&]*)/) || [null, 'fontawesome4'])[1], true);
 
 			// document.getElementById('object_layout').value = (window.location.href.match(/[?&]object_layout=([^&]+)/) || [])[1] || 'normal';
-			JSONEditor.defaults.options.object_layout = 'normal';
+			JSONEditor.defaults.options.object_layout = 'grid';
 
 			// document.getElementById('show_errors').value = (window.location.href.match(/[?&]show_errors=([^&]+)/) || [])[1] || 'interaction';
 			JSONEditor.defaults.options.show_errors = 'interaction'
