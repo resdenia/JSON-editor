@@ -1,0 +1,142 @@
+body {
+  top: 0;
+  margin: 0;
+}
+.main-wrapper {
+  padding-top: 45px;
+  background: linear-gradient(219.44deg, #f6fbff 5.43%, #efeff9 109.55%);
+  min-height: 88vh;
+}
+
+header {
+  background: #1c1e21;
+  display: flex !important;
+  padding: 32px 32px;
+  justify-content: space-between;
+}
+.nav-wrapper {
+  justify-content: flex-end;
+  margin-right: 0;
+  display: flex;
+  align-self: center;
+}
+.logo-wrapper h1 {
+  color: #fff;
+  margin: 0px;
+}
+
+.nav-wrapper a {
+  color: #fff;
+}
+
+div#editor {
+  background: #ffffff;
+  box-shadow: 0px 12px 12px -6px rgb(79 118 178 / 17%);
+  border-radius: 5px;
+}
+div[data-schemaid='root'] {
+  padding: 20px;
+}
+div[data-schemaid='root'] h3 {
+  margin-top: 0px;
+}
+/* main section */
+.editor-top-section h2 {
+  margin-top: 0px;
+}
+.switcher-json {
+  justify-content: flex-end;
+  margin-right: 0;
+  display: flex;
+  align-self: center;
+}
+
+.editor-top-section {
+  display: flex;
+  justify-content: space-between;
+}
+.switcher-json {
+  cursor: pointer;
+}
+.switcher-json span {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  text-transform: uppercase;
+  color: #2e3141;
+  margin-left: 10px;
+}
+.switcher-json svg {
+  pointer-events: none;
+}
+
+.switcher-json span {
+  pointer-events: none;
+}
+input.form-control {
+  background: #f6f9fc;
+  border-radius: 5px;
+  border: none;
+  height: 46px;
+}
+
+.well {
+  background: #fff !important;
+  border: 0px;
+  box-shadow: none;
+}
+/* main section */
+/* right section */
+.tab-nav-contaier {
+  margin-top: 43px;
+}
+.tab-nav-body {
+  min-height: 140px;
+  background: #e8edf8;
+  border-radius: 0px 0px 5px 5px;
+}
+
+.tab-nav-controller {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tab-nav-controller .tab-nav-item {
+  width: 50%;
+  text-align: center;
+  background: #e8edf8;
+  opacity: 0.5;
+}
+
+.tab-nav-controller .tab-nav-item:first-child {
+  margin-right: 2px;
+}
+
+.tab-nav-controller .tab-nav-item:last-child {
+  margin-left: 3px;
+}
+
+.tab-nav-item.active {
+  opacity: 1;
+}
+.tab-nav-item p {
+  padding: 15px 0px;
+  margin: 0px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;
+  align-items: center;
+  text-align: center;
+  text-transform: uppercase;
+  color: #a6abc4;
+}
+.tab-nav-item {
+  border-radius: 5px 5px 0px 0px;
+}
+
+/* right section */
