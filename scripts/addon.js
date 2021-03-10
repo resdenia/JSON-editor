@@ -5,6 +5,10 @@ const jsonContainer = document.querySelector('.json-format');
 // tabs
 const tabItems = document.querySelectorAll('.tab-nav-item');
 
+tabItems.forEach((tabItem) => {
+  tabItem.addEventListener('click', (e) => {});
+});
+
 jsonSwitcher.addEventListener('click', (e) => {
   jsonSwitcher.classList.toggle('active');
   if (jsonSwitcher.classList.contains('active')) {

@@ -89,6 +89,29 @@ input.form-control {
   border: 0px;
   box-shadow: none;
 }
+.json-editor-btn-add {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 15px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #a6abc4;
+  background: #f0f2f8;
+  border-radius: 6px !important;
+  border: 0px;
+  padding: 15px 28px;
+}
+
+.well.well-sm .well {
+  border: 0px !important;
+}
+.well.well-sm {
+  border: 0px;
+  padding: 9px 4px;
+}
 /* main section */
 /* right section */
 .tab-nav-contaier {
@@ -110,6 +133,7 @@ input.form-control {
   text-align: center;
   background: #e8edf8;
   opacity: 0.5;
+  cursor: pointer;
 }
 
 .tab-nav-controller .tab-nav-item:first-child {

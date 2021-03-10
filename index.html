@@ -95,6 +95,8 @@
 							</div>
 						</div>
 						<div class="tab-nav-body">
+							<div class="tab-nav-body__item active" data-tabbody="sample"></div>
+							<div class="tab-nav-body__item" data-tabbody="parsedlogs"></div>
 
 						</div>
 					</div>
@@ -147,7 +149,15 @@
 															}
 														},
 														"type": {
-															"type": "string"
+															"type": "string",
+															"enum": [
+																"int",
+																"long",
+																"float",
+																"double",
+																"string",
+																"boolean"
+															]
 														}
 													}
 												}
@@ -175,7 +185,10 @@
 															"type": "string"
 														},
 														"truncatedInputLength": {
-															"type": "string"
+															"type": [
+																"number",
+																"null"
+															]
 														},
 														"tagOnTruncated": {
 															"type": "array",
@@ -222,7 +235,10 @@
 													"type": "object",
 													"properties": {
 														"targetField": {
-															"type": "string"
+															"type": [
+																"string",
+																"null"
+															]
 														}
 													}
 												}
@@ -263,7 +279,10 @@
 													"type": "object",
 													"properties": {
 														"targetField": {
-															"type": "string"
+															"type": [
+																"string",
+																"null"
+															]
 														},
 														"field": {
 															"type": "string"
@@ -294,7 +313,10 @@
 															"type": "string"
 														},
 														"targetField": {
-															"type": "string"
+															"type": [
+																"string",
+																"null"
+															]
 														},
 														"tagsOnSuccess": {
 															"type": "array",
@@ -305,7 +327,22 @@
 														"properties": {
 															"type": "array",
 															"items": {
-																"type": "string"
+																"type": "string",
+																"enum": [
+																	"ip",
+																	"country_name",
+																	"country_code2",
+																	"continent_code",
+																	"region_name",
+																	"real_region_name",
+																	"city_name",
+																	"latitude",
+																	"longitude",
+																	"timezone",
+																	"postal_code",
+																	"location",
+																	"dma_code"
+																]
 															}
 														}
 													}
@@ -368,7 +405,10 @@
 															}
 														},
 														"ignoreMissing": {
-															"type": "string"
+															"type": [
+																"boolean",
+																"null"
+															]
 														}
 													}
 												}
@@ -387,10 +427,18 @@
 													"type": "object",
 													"properties": {
 														"dictionary": {
-															"type": "string"
+															"type": "object",
+															"patternProperties": {
+																".*": {
+																	"type": "string"
+																}
+															}
 														},
 														"targetField": {
-															"type": "string"
+															"type": [
+																"string",
+																"null"
+															]
 														},
 														"field": {
 															"type": "string"
@@ -418,10 +466,13 @@
 															"type": "string"
 														},
 														"end": {
-															"type": "string"
+															"type": "number"
 														},
 														"begin": {
-															"type": "string"
+															"type": [
+																"number",
+																"null"
+															]
 														}
 													}
 												}
@@ -440,7 +491,10 @@
 													"type": "object",
 													"properties": {
 														"percentage": {
-															"type": "string"
+															"type": [
+																"number",
+																"null"
+															]
 														}
 													}
 												}
@@ -487,7 +541,12 @@
 															"type": "string"
 														},
 														"renames": {
-															"type": "string"
+															"type": "object",
+															"patternProperties": {
+																".*": {
+																	"type": "string"
+																}
+															}
 														}
 													}
 												}
@@ -506,13 +565,22 @@
 													"type": "object",
 													"properties": {
 														"charset": {
-															"type": "string"
+															"type": [
+																"string",
+																"null"
+															]
 														},
 														"allFields": {
-															"type": "string"
+															"type": [
+																"boolean",
+																"null"
+															]
 														},
 														"field": {
-															"type": "string"
+															"type": [
+																"string",
+																"null"
+															]
 														}
 													}
 												}
@@ -584,7 +652,14 @@
 															"type": "string"
 														},
 														"algorithm": {
-															"type": "string"
+															"type": "string",
+															"enum": [
+																"SHA1",
+																"SHA256",
+																"SHA384",
+																"SHA512",
+																"MD5"
+															]
 														}
 													}
 												}
@@ -653,7 +728,12 @@
 													"type": "object",
 													"properties": {
 														"xpath": {
-															"type": "string"
+															"type": "object",
+															"patternProperties": {
+																".*": {
+																	"type": "string"
+																}
+															}
 														},
 														"targetField": {
 															"type": "string"
@@ -662,7 +742,10 @@
 															"type": "string"
 														},
 														"storeXml": {
-															"type": "string"
+															"type": [
+																"boolean",
+																"null"
+															]
 														}
 													}
 												}
@@ -700,7 +783,10 @@
 													"type": "object",
 													"properties": {
 														"separator": {
-															"type": "string"
+															"type": [
+																"string",
+																"null"
+															]
 														}
 													}
 												}
@@ -719,16 +805,25 @@
 													"type": "object",
 													"properties": {
 														"skipEmptyColumns": {
-															"type": "string"
+															"type": [
+																"boolean",
+																"null"
+															]
 														},
 														"quoteChar": {
-															"type": "string"
+															"type": [
+																"string",
+																"null"
+															]
 														},
 														"targetField": {
 															"type": "string"
 														},
 														"field": {
-															"type": "string"
+															"type": [
+																"string",
+																"null"
+															]
 														},
 														"columns": {
 															"type": "array",
@@ -737,13 +832,24 @@
 															}
 														},
 														"convert": {
-															"type": "string"
+															"type": "object",
+															"patternProperties": {
+																".*": {
+																	"type": "string"
+																}
+															}
 														},
 														"autoGenerateColumnNames": {
-															"type": "string"
+															"type": [
+																"boolean",
+																"null"
+															]
 														},
 														"separator": {
-															"type": "string"
+															"type": [
+																"string",
+																"null"
+															]
 														}
 													}
 												}
@@ -790,7 +896,10 @@
 															}
 														},
 														"maxKeyLength": {
-															"type": "string"
+															"type": [
+																"number",
+																"null"
+															]
 														},
 														"targetField": {
 															"type": "string"
@@ -802,25 +911,43 @@
 															"type": "string"
 														},
 														"prefix": {
-															"type": "string"
+															"type": [
+																"string",
+																"null"
+															]
 														},
 														"valueSplit": {
-															"type": "string"
+															"type": [
+																"string",
+																"null"
+															]
 														},
 														"fieldSplit": {
-															"type": "string"
+															"type": [
+																"string",
+																"null"
+															]
 														},
 														"trimKey": {
 															"type": "string"
 														},
 														"allowDuplicateValues": {
-															"type": "string"
+															"type": [
+																"boolean",
+																"null"
+															]
 														},
 														"recursive": {
-															"type": "string"
+															"type": [
+																"boolean",
+																"null"
+															]
 														},
 														"includeBrackets": {
-															"type": "string"
+															"type": [
+																"boolean",
+																"null"
+															]
 														},
 														"includeKeys": {
 															"type": "array",
@@ -851,7 +978,10 @@
 															}
 														},
 														"targetField": {
-															"type": "string"
+															"type": [
+																"string",
+																"null"
+															]
 														},
 														"field": {
 															"type": "string"
@@ -860,7 +990,10 @@
 															"type": "string"
 														},
 														"outputFormat": {
-															"type": "string"
+															"type": [
+																"string",
+																"null"
+															]
 														}
 													}
 												}
