@@ -4,6 +4,7 @@ const jsonContainer = document.querySelector('.json-format');
 const uploadViewContainer = document.querySelector('.uploadView');
 const resultLogData = document.querySelector('div[data-tabbody="parsedlogs"]');
 const innerInputToggler = document.querySelectorAll('.innerTab li');
+const parsedContainer = document.querySelector('#parsedLogs');
 
 innerInputToggler.forEach((tabItem) => {
   tabItem.addEventListener('click', (e) => {
@@ -140,15 +141,34 @@ const sendToSamwill = () => {
 
       if (json.length > 1 && ErrorLog.length > 0) {
         console.log(ErrorLog);
+        return;
       }
+
       if (json.status || json.status) {
         errorHandler(json.status);
+        return;
       }
+
+      successfullResponse(json);
     } catch (e) {
       console.log(e);
       errorHandler(e);
     }
   });
+};
+
+const successfullResponse = (resp) => {
+  const parsedLogsToDisplay = resp.map((respItem) => {
+    return respItem.resultingLog;
+  });
+
+  console.log(parsedLogsToDisplay);
+  if (parsedLogsToDisplay.length > 0) {
+    parsedContainer.value = JSON.stringify(parsedLogsToDisplay, null, 4);
+    document
+      .querySelector('div[data-tabitem="parsedlogs"]')
+      .classList.add('successed');
+  }
 };
 
 const syntaxHighlight = (json) => {
