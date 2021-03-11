@@ -176,9 +176,6 @@
 					"definitions": {
 						"Step": {
 							"type": "object",
-							"options": {
-								"disable_collapse": true
-							},
 							"oneOf": [
 								{
 									"title": "convert",
@@ -197,10 +194,16 @@
 											"title": " ",
 											"properties": {
 												"name": {
+													"options": {
+														"hidden": true
+													},
 													"type": "string"
 												},
 												"config": {
 													"type": "object",
+													"options": {
+														"collapsed": true
+													},
 													"required": [
 														"path",
 														"paths",
@@ -234,12 +237,18 @@
 												},
 												"onFailure": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
 												},
 												"onSuccess": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
@@ -265,10 +274,16 @@
 											"title": " ",
 											"properties": {
 												"name": {
+													"options": {
+														"hidden": true
+													},
 													"type": "string"
 												},
 												"config": {
 													"type": "object",
+													"options": {
+														"collapsed": true
+													},
 													"required": [
 														"field"
 													],
@@ -298,12 +313,18 @@
 												},
 												"onFailure": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
 												},
 												"onSuccess": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
@@ -329,10 +350,16 @@
 											"title": " ",
 											"properties": {
 												"name": {
+													"options": {
+														"hidden": true
+													},
 													"type": "string"
 												},
 												"config": {
 													"type": "object",
+													"options": {
+														"collapsed": true
+													},
 													"required": [
 														"field"
 													],
@@ -347,12 +374,18 @@
 												},
 												"onFailure": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
 												},
 												"onSuccess": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
@@ -378,10 +411,16 @@
 											"title": " ",
 											"properties": {
 												"name": {
+													"options": {
+														"hidden": true
+													},
 													"type": "string"
 												},
 												"config": {
 													"type": "object",
+													"options": {
+														"collapsed": true
+													},
 													"required": [],
 													"properties": {
 														"targetField": {
@@ -391,12 +430,18 @@
 												},
 												"onFailure": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
 												},
 												"onSuccess": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
@@ -422,10 +467,16 @@
 											"title": " ",
 											"properties": {
 												"name": {
+													"options": {
+														"hidden": true
+													},
 													"type": "string"
 												},
 												"config": {
 													"type": "object",
+													"options": {
+														"collapsed": true
+													},
 													"required": [
 														"tags"
 													],
@@ -443,12 +494,18 @@
 												},
 												"onFailure": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
 												},
 												"onSuccess": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
@@ -474,10 +531,16 @@
 											"title": " ",
 											"properties": {
 												"name": {
+													"options": {
+														"hidden": true
+													},
 													"type": "string"
 												},
 												"config": {
 													"type": "object",
+													"options": {
+														"collapsed": true
+													},
 													"required": [
 														"field",
 														"inputWords"
@@ -502,12 +565,18 @@
 												},
 												"onFailure": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
 												},
 												"onSuccess": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
@@ -533,10 +602,16 @@
 											"title": " ",
 											"properties": {
 												"name": {
+													"options": {
+														"hidden": true
+													},
 													"type": "string"
 												},
 												"config": {
 													"type": "object",
+													"options": {
+														"collapsed": true
+													},
 													"required": [
 														"sourceField"
 													],
@@ -584,12 +659,18 @@
 												},
 												"onFailure": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
 												},
 												"onSuccess": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
@@ -615,10 +696,16 @@
 											"title": " ",
 											"properties": {
 												"name": {
+													"options": {
+														"hidden": true
+													},
 													"type": "string"
 												},
 												"config": {
 													"type": "object",
+													"options": {
+														"collapsed": true
+													},
 													"required": [
 														"fields"
 													],
@@ -636,12 +723,18 @@
 												},
 												"onFailure": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
 												},
 												"onSuccess": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
@@ -667,10 +760,16 @@
 											"title": " ",
 											"properties": {
 												"name": {
+													"options": {
+														"hidden": true
+													},
 													"type": "string"
 												},
 												"config": {
 													"type": "object",
+													"options": {
+														"collapsed": true
+													},
 													"required": [
 														"field",
 														"patterns"
@@ -713,12 +812,18 @@
 												},
 												"onFailure": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
 												},
 												"onSuccess": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
@@ -744,10 +849,16 @@
 											"title": " ",
 											"properties": {
 												"name": {
+													"options": {
+														"hidden": true
+													},
 													"type": "string"
 												},
 												"config": {
 													"type": "object",
+													"options": {
+														"collapsed": true
+													},
 													"required": [
 														"field",
 														"dictionary"
@@ -774,12 +885,18 @@
 												},
 												"onFailure": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
 												},
 												"onSuccess": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
@@ -805,10 +922,16 @@
 											"title": " ",
 											"properties": {
 												"name": {
+													"options": {
+														"hidden": true
+													},
 													"type": "string"
 												},
 												"config": {
 													"type": "object",
+													"options": {
+														"collapsed": true
+													},
 													"required": [
 														"field"
 													],
@@ -826,12 +949,18 @@
 												},
 												"onFailure": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
 												},
 												"onSuccess": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
@@ -857,10 +986,16 @@
 											"title": " ",
 											"properties": {
 												"name": {
+													"options": {
+														"hidden": true
+													},
 													"type": "string"
 												},
 												"config": {
 													"type": "object",
+													"options": {
+														"collapsed": true
+													},
 													"required": [],
 													"properties": {
 														"percentage": {
@@ -870,12 +1005,18 @@
 												},
 												"onFailure": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
 												},
 												"onSuccess": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
@@ -901,10 +1042,16 @@
 											"title": " ",
 											"properties": {
 												"name": {
+													"options": {
+														"hidden": true
+													},
 													"type": "string"
 												},
 												"config": {
 													"type": "object",
+													"options": {
+														"collapsed": true
+													},
 													"required": [
 														"field",
 														"separator"
@@ -920,12 +1067,18 @@
 												},
 												"onFailure": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
 												},
 												"onSuccess": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
@@ -951,10 +1104,16 @@
 											"title": " ",
 											"properties": {
 												"name": {
+													"options": {
+														"hidden": true
+													},
 													"type": "string"
 												},
 												"config": {
 													"type": "object",
+													"options": {
+														"collapsed": true
+													},
 													"required": [],
 													"properties": {
 														"from": {
@@ -975,12 +1134,18 @@
 												},
 												"onFailure": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
 												},
 												"onSuccess": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
@@ -1006,10 +1171,16 @@
 											"title": " ",
 											"properties": {
 												"name": {
+													"options": {
+														"hidden": true
+													},
 													"type": "string"
 												},
 												"config": {
 													"type": "object",
+													"options": {
+														"collapsed": true
+													},
 													"required": [],
 													"properties": {
 														"allFields": {
@@ -1025,12 +1196,18 @@
 												},
 												"onFailure": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
 												},
 												"onSuccess": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
@@ -1056,10 +1233,16 @@
 											"title": " ",
 											"properties": {
 												"name": {
+													"options": {
+														"hidden": true
+													},
 													"type": "string"
 												},
 												"config": {
 													"type": "object",
+													"options": {
+														"collapsed": true
+													},
 													"required": [
 														"fields"
 													],
@@ -1077,12 +1260,18 @@
 												},
 												"onFailure": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
 												},
 												"onSuccess": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
@@ -1108,10 +1297,16 @@
 											"title": " ",
 											"properties": {
 												"name": {
+													"options": {
+														"hidden": true
+													},
 													"type": "string"
 												},
 												"config": {
 													"type": "object",
+													"options": {
+														"collapsed": true
+													},
 													"required": [
 														"tags"
 													],
@@ -1129,12 +1324,18 @@
 												},
 												"onFailure": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
 												},
 												"onSuccess": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
@@ -1160,10 +1361,16 @@
 											"title": " ",
 											"properties": {
 												"name": {
+													"options": {
+														"hidden": true
+													},
 													"type": "string"
 												},
 												"config": {
 													"type": "object",
+													"options": {
+														"collapsed": true
+													},
 													"required": [
 														"fields",
 														"key"
@@ -1195,12 +1402,18 @@
 												},
 												"onFailure": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
 												},
 												"onSuccess": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
@@ -1226,10 +1439,16 @@
 											"title": " ",
 											"properties": {
 												"name": {
+													"options": {
+														"hidden": true
+													},
 													"type": "string"
 												},
 												"config": {
 													"type": "object",
+													"options": {
+														"collapsed": true
+													},
 													"required": [
 														"field",
 														"pattern",
@@ -1249,12 +1468,18 @@
 												},
 												"onFailure": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
 												},
 												"onSuccess": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
@@ -1280,10 +1505,16 @@
 											"title": " ",
 											"properties": {
 												"name": {
+													"options": {
+														"hidden": true
+													},
 													"type": "string"
 												},
 												"config": {
 													"type": "object",
+													"options": {
+														"collapsed": true
+													},
 													"required": [],
 													"properties": {
 														"path": {
@@ -1302,12 +1533,18 @@
 												},
 												"onFailure": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
 												},
 												"onSuccess": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
@@ -1333,10 +1570,16 @@
 											"title": " ",
 											"properties": {
 												"name": {
+													"options": {
+														"hidden": true
+													},
 													"type": "string"
 												},
 												"config": {
 													"type": "object",
+													"options": {
+														"collapsed": true
+													},
 													"required": [
 														"field"
 													],
@@ -1362,12 +1605,18 @@
 												},
 												"onFailure": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
 												},
 												"onSuccess": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
@@ -1393,10 +1642,16 @@
 											"title": " ",
 											"properties": {
 												"name": {
+													"options": {
+														"hidden": true
+													},
 													"type": "string"
 												},
 												"config": {
 													"type": "object",
+													"options": {
+														"collapsed": true
+													},
 													"required": [
 														"field"
 													],
@@ -1408,12 +1663,18 @@
 												},
 												"onFailure": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
 												},
 												"onSuccess": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
@@ -1439,10 +1700,16 @@
 											"title": " ",
 											"properties": {
 												"name": {
+													"options": {
+														"hidden": true
+													},
 													"type": "string"
 												},
 												"config": {
 													"type": "object",
+													"options": {
+														"collapsed": true
+													},
 													"required": [],
 													"properties": {
 														"separator": {
@@ -1452,12 +1719,18 @@
 												},
 												"onFailure": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
 												},
 												"onSuccess": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
@@ -1483,10 +1756,16 @@
 											"title": " ",
 											"properties": {
 												"name": {
+													"options": {
+														"hidden": true
+													},
 													"type": "string"
 												},
 												"config": {
 													"type": "object",
+													"options": {
+														"collapsed": true
+													},
 													"required": [],
 													"properties": {
 														"field": {
@@ -1528,12 +1807,18 @@
 												},
 												"onFailure": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
 												},
 												"onSuccess": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
@@ -1559,10 +1844,16 @@
 											"title": " ",
 											"properties": {
 												"name": {
+													"options": {
+														"hidden": true
+													},
 													"type": "string"
 												},
 												"config": {
 													"type": "object",
+													"options": {
+														"collapsed": true
+													},
 													"required": [
 														"targetField",
 														"expression"
@@ -1578,12 +1869,18 @@
 												},
 												"onFailure": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
 												},
 												"onSuccess": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
@@ -1609,10 +1906,16 @@
 											"title": " ",
 											"properties": {
 												"name": {
+													"options": {
+														"hidden": true
+													},
 													"type": "string"
 												},
 												"config": {
 													"type": "object",
+													"options": {
+														"collapsed": true
+													},
 													"required": [
 														"field"
 													],
@@ -1672,12 +1975,18 @@
 												},
 												"onFailure": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
 												},
 												"onSuccess": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
@@ -1703,10 +2012,16 @@
 											"title": " ",
 											"properties": {
 												"name": {
+													"options": {
+														"hidden": true
+													},
 													"type": "string"
 												},
 												"config": {
 													"type": "object",
+													"options": {
+														"collapsed": true
+													},
 													"required": [
 														"field"
 													],
@@ -1736,12 +2051,18 @@
 												},
 												"onFailure": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
 												},
 												"onSuccess": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
@@ -1767,10 +2088,16 @@
 											"title": " ",
 											"properties": {
 												"name": {
+													"options": {
+														"hidden": true
+													},
 													"type": "string"
 												},
 												"config": {
 													"type": "object",
+													"options": {
+														"collapsed": true
+													},
 													"required": [
 														"path",
 														"values"
@@ -1792,12 +2119,18 @@
 												},
 												"onFailure": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
 												},
 												"onSuccess": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
@@ -1823,10 +2156,16 @@
 											"title": " ",
 											"properties": {
 												"name": {
+													"options": {
+														"hidden": true
+													},
 													"type": "string"
 												},
 												"config": {
 													"type": "object",
+													"options": {
+														"collapsed": true
+													},
 													"required": [
 														"path",
 														"value"
@@ -1846,12 +2185,18 @@
 												},
 												"onFailure": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
 												},
 												"onSuccess": {
 													"type": "array",
+													"options": {
+														"collapsed": true
+													},
 													"items": {
 														"$ref": "#/definitions/Step"
 													}
@@ -1902,9 +2247,6 @@
 						},
 						"Condition": {
 							"type": "object",
-							"options": {
-								"disable_collapse": true
-							},
 							"oneOf": [
 								{
 									"additionalProperties": false,
