@@ -7,6 +7,25 @@ body {
 .iconText {
   margin-top: 200px;
 }
+.well.well-sm h3.je-header label {
+  font-size: 14px;
+}
+
+.well.well-sm label {
+  font-size: 20px;
+  margin-bottom: 0px;
+  line-height: 37px;
+}
+
+select.form-control.je-switcher {
+  font-size: 19px;
+  background: #e8edf8;
+  border: 0px;
+  padding: 4px;
+  margin-top: -7px;
+
+  font-style: normal;
+}
 i.fa.fa-caret-square-o-down {
   border: solid black;
   border-width: 0 3px 3px 0;
