@@ -4,6 +4,62 @@ body {
 
   background: #f3f6fc;
 }
+.iconText {
+  margin-top: 50%;
+}
+i.fa.fa-caret-square-o-down {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 0px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  margin: 0px !important;
+}
+i.fa.fa-caret-square-o-right {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 0px;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  margin: 0px !important;
+}
+
+i.fa.fa-caret-square-o-down:before {
+  content: ' ';
+  width: 9px;
+  height: 9px;
+  display: block;
+  margin: 0px;
+}
+i.fa.fa-caret-square-o-right:before {
+  content: ' ';
+  width: 9px;
+  height: 9px;
+  display: block;
+  margin: 0px;
+}
+
+button.btn.btn-default.json-editor-btn-collapse.json-editor-btntype-toggle {
+  border: none;
+  height: 15px;
+  margin-bottom: 6px;
+}
+/* .je-object__container h3.je-header {
+  display: table;
+}
+
+h3.je-header label {
+  display: table-header-group;
+}
+
+h3.je-header button {
+  display: table-footer-group;
+} */
+button.btn.btn-default.json-editor-btn-collapse.json-editor-btntype-toggle:hover {
+  background: transparent;
+}
 .main-wrapper {
   padding-top: 45px;
   background: linear-gradient(219.44deg, #f6fbff 5.43%, #efeff9 109.55%);
@@ -16,6 +72,18 @@ a.validateWithSamwill {
   border-radius: 5px;
   color: #1c1e21 !important;
   cursor: pointer;
+}
+button.btn.btn-default {
+  outline: none;
+}
+
+button:focus {
+  background: transparent;
+}
+
+button.btn.btn-default.json-editor-btn-collapse.json-editor-btntype-toggle:focus {
+  outline-offset: 0px !important;
+  background-color: #fff !important;
 }
 .errorStatus {
   position: absolute;
