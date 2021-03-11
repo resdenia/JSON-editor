@@ -10,7 +10,16 @@ body {
 .well.well-sm h3.je-header label {
   font-size: 14px;
 }
+.row .row h3 {
+  display: flex;
+}
 
+.row
+  .row
+  button.btn.btn-default.json-editor-btn-collapse.json-editor-btntype-toggle {
+  margin-top: 9px;
+  margin-bottom: 0px;
+}
 .well.well-sm label {
   font-size: 20px;
   margin-bottom: 0px;
