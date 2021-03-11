@@ -6,7 +6,7 @@
 	<title>JSON Editor Example</title>
 	<link rel='stylesheet' href="./css/main.css">
 	<script src="https://cdn.jsdelivr.net/npm/@json-editor/json-editor@latest/dist/jsoneditor.min.js"></script>
-	<script src="./polyfills/assign.js"></script>
+	<!-- <script src="./polyfills/assign.js"></script> -->
 	<!-- placeholders for the theme switcher -->
 	<link rel='stylesheet' id='theme_stylesheet'>
 	<link rel='stylesheet' id='icon_stylesheet'>
@@ -36,10 +36,14 @@
 			<h1>Parsing Editor</h1>
 		</div>
 		<div class="nav-wrapper">
+
+			<a class="validateWithSamwill">Parse logs</a>
 			<a class="reset_btn0" href="">Reset</a>
 		</div>
 	</header>
-
+	<div class="errorStatus" style="display: none;">
+		<p></p>
+	</div>
 	<div class="main-wrapper">
 		<div class="container">
 			<div class="row">
@@ -99,8 +103,14 @@
 						</div>
 						<div class="tab-nav-body">
 							<div class="tab-nav-body__item active" data-tabbody="sample">
+								<div class="innerTab">
+									<ul>
+										<li data-togglerInput="uploadView">Input</li>
+										<li data-togglerInput="uploadView" class="active">Upload</li>
+									</ul>
+								</div>
 								<input id="fileUploadButton" hidden="hidden" type="file">
-								<label for="fileUploadButton" class="uploadView">
+								<label for="fileUploadButton" class="inputView uploadView active">
 									<div class="iconText">
 										<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
 											<path d="M6 2L6 7" stroke="#A6ABC4" stroke-width="2" stroke-linecap="round" />
@@ -113,7 +123,7 @@
 										upload Sample
 									</div>
 								</label>
-								<textarea style="display:none;" class="sampleBox" name="samplesBox" id="samplesBox" rows="10"
+								<textarea class="inputView sampleBox" name="samplesBox" id="samplesBox" rows="10"
 									spellcheck="false"></textarea>
 
 							</div>
@@ -129,6 +139,7 @@
 			</div>
 		</div>
 	</div>
+	<script src='scripts/errorHandler.js'></script>
 	<script src='scripts/addon.js'></script>
 	<script src="./src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 	<script src="./src-min-noconflict/ext-language_tools.js"></script>
@@ -240,9 +251,7 @@
 													"title": " ",
 													"type": "object",
 													"required": [
-														"field",
-														"targetField",
-														"prefix"
+														"field"
 													],
 													"properties": {
 														"field": {
@@ -298,8 +307,7 @@
 													"title": " ",
 													"type": "object",
 													"required": [
-														"field",
-														"targetField"
+														"field"
 													],
 													"properties": {
 														"field": {
@@ -656,8 +664,7 @@
 													"type": "object",
 													"required": [
 														"field",
-														"dictionary",
-														"fallback"
+														"dictionary"
 													],
 													"properties": {
 														"field": {
@@ -712,8 +719,7 @@
 													"title": " ",
 													"type": "object",
 													"required": [
-														"field",
-														"end"
+														"field"
 													],
 													"properties": {
 														"field": {
@@ -843,11 +849,7 @@
 												"config": {
 													"title": " ",
 													"type": "object",
-													"required": [
-														"from",
-														"to",
-														"renames"
-													],
+													"required": [],
 													"properties": {
 														"from": {
 															"type": "string"
@@ -1137,10 +1139,7 @@
 												"config": {
 													"title": " ",
 													"type": "object",
-													"required": [
-														"path",
-														"fields"
-													],
+													"required": [],
 													"properties": {
 														"path": {
 															"type": "string"
@@ -1186,9 +1185,7 @@
 													"title": " ",
 													"type": "object",
 													"required": [
-														"field",
-														"targetField",
-														"xpath"
+														"field"
 													],
 													"properties": {
 														"field": {
@@ -1322,10 +1319,7 @@
 												"config": {
 													"title": " ",
 													"type": "object",
-													"required": [
-														"targetField",
-														"convert"
-													],
+													"required": [],
 													"properties": {
 														"field": {
 															"type": "string"
@@ -1439,12 +1433,7 @@
 													"title": " ",
 													"type": "object",
 													"required": [
-														"field",
-														"targetField",
-														"includeKeys",
-														"excludeKeys",
-														"trim",
-														"trimKey"
+														"field"
 													],
 													"properties": {
 														"field": {
@@ -1527,9 +1516,7 @@
 													"title": " ",
 													"type": "object",
 													"required": [
-														"field",
-														"formats",
-														"timeZone"
+														"field"
 													],
 													"properties": {
 														"field": {
@@ -1724,51 +1711,6 @@
 								},
 								{
 									"additionalProperties": false,
-									"title": "or",
-									"required": [
-										"or"
-									],
-									"properties": {
-										"or": {
-											"title": " ",
-											"type": "array",
-											"items": {
-												"$ref": "#/definitions/Condition"
-											}
-										}
-									}
-								},
-								{
-									"additionalProperties": false,
-									"title": "hasValue",
-									"required": [
-										"hasValue"
-									],
-									"properties": {
-										"hasValue": {
-											"title": " ",
-											"type": "object",
-											"properties": {
-												"field": {
-													"type": "string"
-												},
-												"possibleValues": {
-													"type": "array",
-													"items": {
-														"type": [
-															"string",
-															"boolean",
-															"number",
-															"boolean"
-														]
-													}
-												}
-											}
-										}
-									}
-								},
-								{
-									"additionalProperties": false,
 									"title": "mathComparator",
 									"required": [
 										"mathComparator"
@@ -1777,6 +1719,13 @@
 										"mathComparator": {
 											"title": " ",
 											"type": "object",
+											"required": [
+												"field",
+												"gte",
+												"gt",
+												"lte",
+												"lt"
+											],
 											"properties": {
 												"field": {
 													"type": "string"
@@ -1799,48 +1748,6 @@
 								},
 								{
 									"additionalProperties": false,
-									"title": "in",
-									"required": [
-										"in"
-									],
-									"properties": {
-										"in": {
-											"title": " ",
-											"type": "object",
-											"properties": {
-												"path": {
-													"type": "string"
-												},
-												"value": {
-													"type": "string"
-												}
-											}
-										}
-									}
-								},
-								{
-									"additionalProperties": false,
-									"title": "fieldType",
-									"required": [
-										"fieldType"
-									],
-									"properties": {
-										"fieldType": {
-											"title": " ",
-											"type": "object",
-											"properties": {
-												"path": {
-													"type": "string"
-												},
-												"type": {
-													"type": "string"
-												}
-											}
-										}
-									}
-								},
-								{
-									"additionalProperties": false,
 									"title": "exists",
 									"required": [
 										"exists"
@@ -1849,6 +1756,9 @@
 										"exists": {
 											"title": " ",
 											"type": "object",
+											"required": [
+												"field"
+											],
 											"properties": {
 												"field": {
 													"type": "string"
@@ -1865,6 +1775,105 @@
 									],
 									"properties": {
 										"and": {
+											"title": " ",
+											"type": "array",
+											"items": {
+												"$ref": "#/definitions/Condition"
+											}
+										}
+									}
+								},
+								{
+									"additionalProperties": false,
+									"title": "in",
+									"required": [
+										"in"
+									],
+									"properties": {
+										"in": {
+											"title": " ",
+											"type": "object",
+											"required": [
+												"path",
+												"value"
+											],
+											"properties": {
+												"path": {
+													"type": "string"
+												},
+												"value": {
+													"type": "string"
+												}
+											}
+										}
+									}
+								},
+								{
+									"additionalProperties": false,
+									"title": "hasValue",
+									"required": [
+										"hasValue"
+									],
+									"properties": {
+										"hasValue": {
+											"title": " ",
+											"type": "object",
+											"required": [
+												"field",
+												"possibleValues"
+											],
+											"properties": {
+												"field": {
+													"type": "string"
+												},
+												"possibleValues": {
+													"type": "array",
+													"items": {
+														"type": [
+															"string",
+															"boolean",
+															"number",
+															"boolean"
+														]
+													}
+												}
+											}
+										}
+									}
+								},
+								{
+									"additionalProperties": false,
+									"title": "fieldType",
+									"required": [
+										"fieldType"
+									],
+									"properties": {
+										"fieldType": {
+											"title": " ",
+											"type": "object",
+											"required": [
+												"path",
+												"type"
+											],
+											"properties": {
+												"path": {
+													"type": "string"
+												},
+												"type": {
+													"type": "string"
+												}
+											}
+										}
+									}
+								},
+								{
+									"additionalProperties": false,
+									"title": "or",
+									"required": [
+										"or"
+									],
+									"properties": {
+										"or": {
 											"title": " ",
 											"type": "array",
 											"items": {
@@ -2031,9 +2040,7 @@
 			};
 			// JSONEditor.defaults.options.display_required_only = ;
 
-			JSONEditor.defaults.options.max_depth = 0;
-			JSONEditor.defaults.options.prompt_before_delete = true;
-			JSONEditor.defaults.options.use_default_values = true;
+			// JSONEditor.defaults.options.max_depth = 0;
 			JSONEditor.defaults.options.array_controls_top = true;
 			JSONEditor.defaults.options.disable_edit_json = true;
 			JSONEditor.defaults.options.disable_array_reorder = true;
@@ -2041,9 +2048,9 @@
 			JSONEditor.defaults.options.disable_properties = true;
 			JSONEditor.defaults.options.no_additional_properties = true;
 			JSONEditor.defaults.options.show_opt_in = true;
-			JSONEditor.defaults.options.required_by_default = true;
 			JSONEditor.defaults.options.disable_array_delete_last_row = true;
 
+			// show_opt_in
 
 			// var refreshBooleanOptions = function (no_reload) {
 			// 	var boolean_options = document.getElementById('boolean_options').children;

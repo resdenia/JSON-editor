@@ -7,6 +7,33 @@ body {
   background: linear-gradient(219.44deg, #f6fbff 5.43%, #efeff9 109.55%);
   min-height: 88vh;
 }
+a.validateWithSamwill {
+  margin-right: 10px;
+  background: #f4f7fd;
+  padding: 5px 14px;
+  border-radius: 5px;
+  color: #1c1e21 !important;
+  cursor: pointer;
+}
+.errorStatus {
+  position: absolute;
+  bottom: -20px;
+  width: 80%;
+  left: 10%;
+  right: 10%;
+  background: rgb(255 0 0 / 30%);
+  border-radius: 5px;
+  padding: 7px;
+  color: #1c1e21;
+  box-shadow: 0px 12px 12px -6px rgb(79 118 178 / 17%);
+}
+
+.errorStatus p {
+  margin: 0px;
+}
+.nav-wrapper {
+  align-items: baseline;
+}
 
 header {
   background: #1c1e21;
@@ -183,7 +210,6 @@ button.btn.btn-default {
   width: 94%;
 }
 textarea#samplesBox {
-  display: block;
   width: 94%;
   margin: 0px 3%;
   margin-bottom: 10px;
@@ -194,6 +220,7 @@ textarea#samplesBox {
   font-size: 15px;
   font-weight: 400;
   letter-spacing: 0.5px;
+  padding: 10px;
 }
 .tab-nav-body__item input {
   visibility: hidden;
@@ -202,7 +229,7 @@ textarea#samplesBox {
   margin-top: 43px;
 }
 .tab-nav-body {
-  min-height: 140px;
+  min-height: 150px;
   background: #e8edf8;
   border-radius: 0px 0px 5px 5px;
 }
@@ -253,5 +280,36 @@ textarea#samplesBox {
 .tab-nav-item {
   border-radius: 5px 5px 0px 0px;
 }
+.innerTab ul {
+  display: inline;
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  padding: 0px;
+  padding-top: 5px;
+  margin-bottom: 9px;
+}
 
+.innerTab ul li {
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: none;
+  cursor: pointer;
+}
+
+.innerTab ul li.active {
+  color: #2ba88b;
+  text-decoration: underline;
+}
+
+input#fileUploadButton {
+  height: 0px;
+}
+.inputView {
+  display: none;
+}
+
+.inputView.active {
+  display: block;
+}
 /* right section */
