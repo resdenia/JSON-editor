@@ -1,6 +1,8 @@
 body {
   top: 0;
   margin: 0;
+
+  background: #f3f6fc;
 }
 .main-wrapper {
   padding-top: 45px;
@@ -200,7 +202,7 @@ button.btn.btn-default {
 }
 .uploadView {
   cursor: pointer;
-  height: 108px;
+  height: 540px;
   border: 2px dashed;
   border-radius: 5px;
   padding: 10px;
@@ -221,6 +223,7 @@ textarea.sampleBox {
   font-weight: 400;
   letter-spacing: 0.5px;
   padding: 10px;
+  min-height: 540px;
 }
 .tab-nav-body__item input {
   visibility: hidden;
@@ -229,7 +232,7 @@ textarea.sampleBox {
   margin-top: 43px;
 }
 .tab-nav-body {
-  min-height: 150px;
+  min-height: 580px;
   background: #e8edf8;
   border-radius: 0px 0px 5px 5px;
 }
