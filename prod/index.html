@@ -176,6 +176,9 @@
 					"definitions": {
 						"Step": {
 							"type": "object",
+							"options": {
+								"disable_collapse": true
+							},
 							"oneOf": [
 								{
 									"title": "convert",
@@ -185,13 +188,18 @@
 									"properties": {
 										"convert": {
 											"type": "object",
+											"options": {
+												"disable_collapse": true
+											},
 											"required": [
 												"config"
 											],
 											"title": " ",
 											"properties": {
+												"name": {
+													"type": "string"
+												},
 												"config": {
-													"title": " ",
 													"type": "object",
 													"required": [
 														"path",
@@ -204,6 +212,9 @@
 														},
 														"paths": {
 															"type": "array",
+															"options": {
+																"disable_collapse": true
+															},
 															"items": {
 																"type": "string"
 															}
@@ -245,13 +256,18 @@
 									"properties": {
 										"userAgent": {
 											"type": "object",
+											"options": {
+												"disable_collapse": true
+											},
 											"required": [
 												"config"
 											],
 											"title": " ",
 											"properties": {
+												"name": {
+													"type": "string"
+												},
 												"config": {
-													"title": " ",
 													"type": "object",
 													"required": [
 														"field"
@@ -271,6 +287,9 @@
 														},
 														"tagOnTruncated": {
 															"type": "array",
+															"options": {
+																"disable_collapse": true
+															},
 															"items": {
 																"type": "string"
 															}
@@ -301,13 +320,18 @@
 									"properties": {
 										"json": {
 											"type": "object",
+											"options": {
+												"disable_collapse": true
+											},
 											"required": [
 												"config"
 											],
 											"title": " ",
 											"properties": {
+												"name": {
+													"type": "string"
+												},
 												"config": {
-													"title": " ",
 													"type": "object",
 													"required": [
 														"field"
@@ -345,13 +369,18 @@
 									"properties": {
 										"docSize": {
 											"type": "object",
+											"options": {
+												"disable_collapse": true
+											},
 											"required": [
 												"config"
 											],
 											"title": " ",
 											"properties": {
+												"name": {
+													"type": "string"
+												},
 												"config": {
-													"title": " ",
 													"type": "object",
 													"required": [],
 													"properties": {
@@ -384,13 +413,18 @@
 									"properties": {
 										"addTag": {
 											"type": "object",
+											"options": {
+												"disable_collapse": true
+											},
 											"required": [
 												"config"
 											],
 											"title": " ",
 											"properties": {
+												"name": {
+													"type": "string"
+												},
 												"config": {
-													"title": " ",
 													"type": "object",
 													"required": [
 														"tags"
@@ -398,6 +432,9 @@
 													"properties": {
 														"tags": {
 															"type": "array",
+															"options": {
+																"disable_collapse": true
+															},
 															"items": {
 																"type": "string"
 															}
@@ -428,13 +465,18 @@
 									"properties": {
 										"ahoCorasick": {
 											"type": "object",
+											"options": {
+												"disable_collapse": true
+											},
 											"required": [
 												"config"
 											],
 											"title": " ",
 											"properties": {
+												"name": {
+													"type": "string"
+												},
 												"config": {
-													"title": " ",
 													"type": "object",
 													"required": [
 														"field",
@@ -449,6 +491,9 @@
 														},
 														"inputWords": {
 															"type": "array",
+															"options": {
+																"disable_collapse": true
+															},
 															"items": {
 																"type": "string"
 															}
@@ -479,13 +524,18 @@
 									"properties": {
 										"geoIp": {
 											"type": "object",
+											"options": {
+												"disable_collapse": true
+											},
 											"required": [
 												"config"
 											],
 											"title": " ",
 											"properties": {
+												"name": {
+													"type": "string"
+												},
 												"config": {
-													"title": " ",
 													"type": "object",
 													"required": [
 														"sourceField"
@@ -499,6 +549,9 @@
 														},
 														"properties": {
 															"type": "array",
+															"options": {
+																"disable_collapse": true
+															},
 															"items": {
 																"type": "string",
 																"enum": [
@@ -520,6 +573,9 @@
 														},
 														"tagsOnSuccess": {
 															"type": "array",
+															"options": {
+																"disable_collapse": true
+															},
 															"items": {
 																"type": "string"
 															}
@@ -550,13 +606,18 @@
 									"properties": {
 										"upperCase": {
 											"type": "object",
+											"options": {
+												"disable_collapse": true
+											},
 											"required": [
 												"config"
 											],
 											"title": " ",
 											"properties": {
+												"name": {
+													"type": "string"
+												},
 												"config": {
-													"title": " ",
 													"type": "object",
 													"required": [
 														"fields"
@@ -564,6 +625,9 @@
 													"properties": {
 														"fields": {
 															"type": "array",
+															"options": {
+																"disable_collapse": true
+															},
 															"items": {
 																"type": "string"
 															}
@@ -594,13 +658,18 @@
 									"properties": {
 										"grok": {
 											"type": "object",
+											"options": {
+												"disable_collapse": true
+											},
 											"required": [
 												"config"
 											],
 											"title": " ",
 											"properties": {
+												"name": {
+													"type": "string"
+												},
 												"config": {
-													"title": " ",
 													"type": "object",
 													"required": [
 														"field",
@@ -612,12 +681,18 @@
 														},
 														"patterns": {
 															"type": "array",
+															"options": {
+																"disable_collapse": true
+															},
 															"items": {
 																"type": "string"
 															}
 														},
 														"overwrite": {
 															"type": "array",
+															"options": {
+																"disable_collapse": true
+															},
 															"items": {
 																"type": "string"
 															}
@@ -627,6 +702,9 @@
 														},
 														"tagsOnFailure": {
 															"type": "array",
+															"options": {
+																"disable_collapse": true
+															},
 															"items": {
 																"type": "string"
 															}
@@ -657,13 +735,18 @@
 									"properties": {
 										"translate": {
 											"type": "object",
+											"options": {
+												"disable_collapse": true
+											},
 											"required": [
 												"config"
 											],
 											"title": " ",
 											"properties": {
+												"name": {
+													"type": "string"
+												},
 												"config": {
-													"title": " ",
 													"type": "object",
 													"required": [
 														"field",
@@ -713,13 +796,18 @@
 									"properties": {
 										"substring": {
 											"type": "object",
+											"options": {
+												"disable_collapse": true
+											},
 											"required": [
 												"config"
 											],
 											"title": " ",
 											"properties": {
+												"name": {
+													"type": "string"
+												},
 												"config": {
-													"title": " ",
 													"type": "object",
 													"required": [
 														"field"
@@ -760,13 +848,18 @@
 									"properties": {
 										"drop": {
 											"type": "object",
+											"options": {
+												"disable_collapse": true
+											},
 											"required": [
 												"config"
 											],
 											"title": " ",
 											"properties": {
+												"name": {
+													"type": "string"
+												},
 												"config": {
-													"title": " ",
 													"type": "object",
 													"required": [],
 													"properties": {
@@ -799,13 +892,18 @@
 									"properties": {
 										"split": {
 											"type": "object",
+											"options": {
+												"disable_collapse": true
+											},
 											"required": [
 												"config"
 											],
 											"title": " ",
 											"properties": {
+												"name": {
+													"type": "string"
+												},
 												"config": {
-													"title": " ",
 													"type": "object",
 													"required": [
 														"field",
@@ -844,13 +942,18 @@
 									"properties": {
 										"rename": {
 											"type": "object",
+											"options": {
+												"disable_collapse": true
+											},
 											"required": [
 												"config"
 											],
 											"title": " ",
 											"properties": {
+												"name": {
+													"type": "string"
+												},
 												"config": {
-													"title": " ",
 													"type": "object",
 													"required": [],
 													"properties": {
@@ -894,13 +997,18 @@
 									"properties": {
 										"urlDecode": {
 											"type": "object",
+											"options": {
+												"disable_collapse": true
+											},
 											"required": [
 												"config"
 											],
 											"title": " ",
 											"properties": {
+												"name": {
+													"type": "string"
+												},
 												"config": {
-													"title": " ",
 													"type": "object",
 													"required": [],
 													"properties": {
@@ -939,13 +1047,18 @@
 									"properties": {
 										"strip": {
 											"type": "object",
+											"options": {
+												"disable_collapse": true
+											},
 											"required": [
 												"config"
 											],
 											"title": " ",
 											"properties": {
+												"name": {
+													"type": "string"
+												},
 												"config": {
-													"title": " ",
 													"type": "object",
 													"required": [
 														"fields"
@@ -953,6 +1066,9 @@
 													"properties": {
 														"fields": {
 															"type": "array",
+															"options": {
+																"disable_collapse": true
+															},
 															"items": {
 																"type": "string"
 															}
@@ -983,13 +1099,18 @@
 									"properties": {
 										"removeTag": {
 											"type": "object",
+											"options": {
+												"disable_collapse": true
+											},
 											"required": [
 												"config"
 											],
 											"title": " ",
 											"properties": {
+												"name": {
+													"type": "string"
+												},
 												"config": {
-													"title": " ",
 													"type": "object",
 													"required": [
 														"tags"
@@ -997,6 +1118,9 @@
 													"properties": {
 														"tags": {
 															"type": "array",
+															"options": {
+																"disable_collapse": true
+															},
 															"items": {
 																"type": "string"
 															}
@@ -1027,13 +1151,18 @@
 									"properties": {
 										"anonymize": {
 											"type": "object",
+											"options": {
+												"disable_collapse": true
+											},
 											"required": [
 												"config"
 											],
 											"title": " ",
 											"properties": {
+												"name": {
+													"type": "string"
+												},
 												"config": {
-													"title": " ",
 													"type": "object",
 													"required": [
 														"fields",
@@ -1042,6 +1171,9 @@
 													"properties": {
 														"fields": {
 															"type": "array",
+															"options": {
+																"disable_collapse": true
+															},
 															"items": {
 																"type": "string"
 															}
@@ -1085,13 +1217,18 @@
 									"properties": {
 										"gsub": {
 											"type": "object",
+											"options": {
+												"disable_collapse": true
+											},
 											"required": [
 												"config"
 											],
 											"title": " ",
 											"properties": {
+												"name": {
+													"type": "string"
+												},
 												"config": {
-													"title": " ",
 													"type": "object",
 													"required": [
 														"field",
@@ -1134,13 +1271,18 @@
 									"properties": {
 										"removeField": {
 											"type": "object",
+											"options": {
+												"disable_collapse": true
+											},
 											"required": [
 												"config"
 											],
 											"title": " ",
 											"properties": {
+												"name": {
+													"type": "string"
+												},
 												"config": {
-													"title": " ",
 													"type": "object",
 													"required": [],
 													"properties": {
@@ -1149,6 +1291,9 @@
 														},
 														"fields": {
 															"type": "array",
+															"options": {
+																"disable_collapse": true
+															},
 															"items": {
 																"type": "string"
 															}
@@ -1179,13 +1324,18 @@
 									"properties": {
 										"xml": {
 											"type": "object",
+											"options": {
+												"disable_collapse": true
+											},
 											"required": [
 												"config"
 											],
 											"title": " ",
 											"properties": {
+												"name": {
+													"type": "string"
+												},
 												"config": {
-													"title": " ",
 													"type": "object",
 													"required": [
 														"field"
@@ -1234,13 +1384,18 @@
 									"properties": {
 										"lowerCase": {
 											"type": "object",
+											"options": {
+												"disable_collapse": true
+											},
 											"required": [
 												"config"
 											],
 											"title": " ",
 											"properties": {
+												"name": {
+													"type": "string"
+												},
 												"config": {
-													"title": " ",
 													"type": "object",
 													"required": [
 														"field"
@@ -1275,13 +1430,18 @@
 									"properties": {
 										"deDot": {
 											"type": "object",
+											"options": {
+												"disable_collapse": true
+											},
 											"required": [
 												"config"
 											],
 											"title": " ",
 											"properties": {
+												"name": {
+													"type": "string"
+												},
 												"config": {
-													"title": " ",
 													"type": "object",
 													"required": [],
 													"properties": {
@@ -1314,13 +1474,18 @@
 									"properties": {
 										"csv": {
 											"type": "object",
+											"options": {
+												"disable_collapse": true
+											},
 											"required": [
 												"config"
 											],
 											"title": " ",
 											"properties": {
+												"name": {
+													"type": "string"
+												},
 												"config": {
-													"title": " ",
 													"type": "object",
 													"required": [],
 													"properties": {
@@ -1338,6 +1503,9 @@
 														},
 														"columns": {
 															"type": "array",
+															"options": {
+																"disable_collapse": true
+															},
 															"items": {
 																"type": "string"
 															}
@@ -1382,13 +1550,18 @@
 									"properties": {
 										"math": {
 											"type": "object",
+											"options": {
+												"disable_collapse": true
+											},
 											"required": [
 												"config"
 											],
 											"title": " ",
 											"properties": {
+												"name": {
+													"type": "string"
+												},
 												"config": {
-													"title": " ",
 													"type": "object",
 													"required": [
 														"targetField",
@@ -1427,13 +1600,18 @@
 									"properties": {
 										"kv": {
 											"type": "object",
+											"options": {
+												"disable_collapse": true
+											},
 											"required": [
 												"config"
 											],
 											"title": " ",
 											"properties": {
+												"name": {
+													"type": "string"
+												},
 												"config": {
-													"title": " ",
 													"type": "object",
 													"required": [
 														"field"
@@ -1447,12 +1625,18 @@
 														},
 														"includeKeys": {
 															"type": "array",
+															"options": {
+																"disable_collapse": true
+															},
 															"items": {
 																"type": "string"
 															}
 														},
 														"excludeKeys": {
 															"type": "array",
+															"options": {
+																"disable_collapse": true
+															},
 															"items": {
 																"type": "string"
 															}
@@ -1510,13 +1694,18 @@
 									"properties": {
 										"date": {
 											"type": "object",
+											"options": {
+												"disable_collapse": true
+											},
 											"required": [
 												"config"
 											],
 											"title": " ",
 											"properties": {
+												"name": {
+													"type": "string"
+												},
 												"config": {
-													"title": " ",
 													"type": "object",
 													"required": [
 														"field"
@@ -1530,6 +1719,9 @@
 														},
 														"formats": {
 															"type": "array",
+															"options": {
+																"disable_collapse": true
+															},
 															"items": {
 																"type": "string"
 															}
@@ -1566,13 +1758,18 @@
 									"properties": {
 										"appendList": {
 											"type": "object",
+											"options": {
+												"disable_collapse": true
+											},
 											"required": [
 												"config"
 											],
 											"title": " ",
 											"properties": {
+												"name": {
+													"type": "string"
+												},
 												"config": {
-													"title": " ",
 													"type": "object",
 													"required": [
 														"path",
@@ -1584,6 +1781,9 @@
 														},
 														"values": {
 															"type": "array",
+															"options": {
+																"disable_collapse": true
+															},
 															"items": {
 																"type": "string"
 															}
@@ -1614,13 +1814,18 @@
 									"properties": {
 										"addField": {
 											"type": "object",
+											"options": {
+												"disable_collapse": true
+											},
 											"required": [
 												"config"
 											],
 											"title": " ",
 											"properties": {
+												"name": {
+													"type": "string"
+												},
 												"config": {
-													"title": " ",
 													"type": "object",
 													"required": [
 														"path",
@@ -1633,7 +1838,6 @@
 														"value": {
 															"type": [
 																"string",
-																"boolean",
 																"number",
 																"boolean"
 															]
@@ -1665,6 +1869,9 @@
 									"properties": {
 										"if": {
 											"type": "object",
+											"options": {
+												"disable_collapse": true
+											},
 											"required": [
 												"condition",
 												"then"
@@ -1695,6 +1902,9 @@
 						},
 						"Condition": {
 							"type": "object",
+							"options": {
+								"disable_collapse": true
+							},
 							"oneOf": [
 								{
 									"additionalProperties": false,
@@ -1706,6 +1916,9 @@
 										"not": {
 											"title": " ",
 											"type": "array",
+											"options": {
+												"disable_collapse": true
+											},
 											"items": {
 												"$ref": "#/definitions/Condition"
 											}
@@ -1722,6 +1935,9 @@
 										"mathComparator": {
 											"title": " ",
 											"type": "object",
+											"options": {
+												"disable_collapse": true
+											},
 											"required": [
 												"field",
 												"gte",
@@ -1759,6 +1975,9 @@
 										"exists": {
 											"title": " ",
 											"type": "object",
+											"options": {
+												"disable_collapse": true
+											},
 											"required": [
 												"field"
 											],
@@ -1780,6 +1999,9 @@
 										"and": {
 											"title": " ",
 											"type": "array",
+											"options": {
+												"disable_collapse": true
+											},
 											"items": {
 												"$ref": "#/definitions/Condition"
 											}
@@ -1796,6 +2018,9 @@
 										"in": {
 											"title": " ",
 											"type": "object",
+											"options": {
+												"disable_collapse": true
+											},
 											"required": [
 												"path",
 												"value"
@@ -1821,6 +2046,9 @@
 										"hasValue": {
 											"title": " ",
 											"type": "object",
+											"options": {
+												"disable_collapse": true
+											},
 											"required": [
 												"field",
 												"possibleValues"
@@ -1831,10 +2059,12 @@
 												},
 												"possibleValues": {
 													"type": "array",
+													"options": {
+														"disable_collapse": true
+													},
 													"items": {
 														"type": [
 															"string",
-															"boolean",
 															"number",
 															"boolean"
 														]
@@ -1854,6 +2084,9 @@
 										"fieldType": {
 											"title": " ",
 											"type": "object",
+											"options": {
+												"disable_collapse": true
+											},
 											"required": [
 												"path",
 												"type"
@@ -1879,6 +2112,9 @@
 										"or": {
 											"title": " ",
 											"type": "array",
+											"options": {
+												"disable_collapse": true
+											},
 											"items": {
 												"$ref": "#/definitions/Condition"
 											}
@@ -1892,9 +2128,15 @@
 					"required": [
 						"steps"
 					],
+					"options": {
+						"disable_collapse": true
+					},
 					"properties": {
 						"steps": {
 							"type": "array",
+							"options": {
+								"disable_collapse": true
+							},
 							"items": {
 								"$ref": "#/definitions/Step"
 							}
@@ -2044,16 +2286,31 @@
 			// JSONEditor.defaults.options.display_required_only = ;
 
 			// JSONEditor.defaults.options.max_depth = 0;
-			JSONEditor.defaults.options.array_controls_top = true;
-			JSONEditor.defaults.options.disable_edit_json = true;
-			JSONEditor.defaults.options.disable_array_reorder = true;
-			JSONEditor.defaults.options.disable_collapse = true;
-			JSONEditor.defaults.options.disable_properties = true;
-			JSONEditor.defaults.options.no_additional_properties = true;
+			// JSONEditor.defaults.options.array_controls_top = true;
+			// JSONEditor.defaults.options.disable_edit_json = true;
+			// JSONEditor.defaults.options.disable_array_reorder = true;
+			// JSONEditor.defaults.options.disable_collapse = true;
+			// JSONEditor.defaults.options.disable_properties = true;
+			// JSONEditor.defaults.options.no_additional_properties = true;
+			// JSONEditor.defaults.options.show_opt_in = true;
+			// JSONEditor.defaults.options.disable_array_delete_last_row = true;
+
+			JSONEditor.defaults.options.required_by_default = false;
+			JSONEditor.defaults.options.display_required_only = false;
 			JSONEditor.defaults.options.show_opt_in = true;
+			JSONEditor.defaults.options.no_additional_properties = true;
+			JSONEditor.defaults.options.ajax = false;
+			JSONEditor.defaults.options.disable_edit_json = true;
+			JSONEditor.defaults.options.disable_collapse = true; //false
+			JSONEditor.defaults.options.disable_properties = true;
+			JSONEditor.defaults.options.disable_array_add = false;
+			JSONEditor.defaults.options.disable_array_reorder = true;
+			JSONEditor.defaults.options.disable_array_delete = false;
+			JSONEditor.defaults.options.enable_array_copy = false;
+			JSONEditor.defaults.options.array_controls_top = true;
+			JSONEditor.defaults.options.disable_array_delete_all_rows = false;
 			JSONEditor.defaults.options.disable_array_delete_last_row = true;
 
-			// show_opt_in
 
 			// var refreshBooleanOptions = function (no_reload) {
 			// 	var boolean_options = document.getElementById('boolean_options').children;
@@ -2093,7 +2350,7 @@
 			setIconlib((window.location.href.match(/[?&]iconlib=([^&]*)/) || [null, 'fontawesome4'])[1], true);
 
 			// document.getElementById('object_layout').value = (window.location.href.match(/[?&]object_layout=([^&]+)/) || [])[1] || 'normal';
-			JSONEditor.defaults.options.object_layout = 'grid';
+			JSONEditor.defaults.options.object_layout = 'normal';
 
 			// document.getElementById('show_errors').value = (window.location.href.match(/[?&]show_errors=([^&]+)/) || [])[1] || 'interaction';
 			JSONEditor.defaults.options.show_errors = 'interaction'
