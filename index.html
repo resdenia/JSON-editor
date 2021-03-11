@@ -5,7 +5,8 @@
 	<meta charset="utf-8" />
 	<title>JSON Editor Example</title>
 	<link rel='stylesheet' href="./css/main.css">
-
+	<script src="https://cdn.jsdelivr.net/npm/@json-editor/json-editor@latest/dist/jsoneditor.min.js"></script>
+	<script src="./polyfills/assign.js"></script>
 	<!-- placeholders for the theme switcher -->
 	<link rel='stylesheet' id='theme_stylesheet'>
 	<link rel='stylesheet' id='icon_stylesheet'>
@@ -16,7 +17,7 @@
 			font-style: normal;
 		}
 	</style>
-	<script src='dist/jsoneditor.js'></script>
+	<!-- <script src='dist/jsoneditor.js'></script> -->
 
 	<script>
 		/**
@@ -46,7 +47,7 @@
 				<div class='span8 col-md-8 columns eight large-8'>
 					<div class="editor-top-section">
 						<h2>Pipeline</h2>
-						<div class="switcher-json">
+						<div id="setvalue" class="switcher-json">
 							<svg width="20" height="13" viewBox="0 0 20 13" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path
 									d="M19.8729 5.98463C19.6942 5.74021 15.4371 0 9.99991 0C4.56275 0 0.305392 5.74021 0.126914 5.98439C-0.0423048 6.21627 -0.0423048 6.53076 0.126914 6.76264C0.305392 7.00705 4.56275 12.7473 9.99991 12.7473C15.4371 12.7473 19.6942 7.00701 19.8729 6.76283C20.0424 6.531 20.0424 6.21627 19.8729 5.98463ZM9.99991 11.4286C5.99486 11.4286 2.52606 7.61869 1.49922 6.37318C2.52473 5.12658 5.98627 1.31868 9.99991 1.31868C14.0048 1.31868 17.4733 5.1279 18.5006 6.37408C17.4751 7.62065 14.0136 11.4286 9.99991 11.4286Z"
@@ -95,7 +96,23 @@
 							</div>
 						</div>
 						<div class="tab-nav-body">
-							<div class="tab-nav-body__item active" data-tabbody="sample"></div>
+							<div class="tab-nav-body__item active" data-tabbody="sample">
+								<input id="fileUploadButton" hidden="hidden" type="file">
+								<div class="uploadView">
+									<div class="iconText">
+										<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M6 2L6 7" stroke="#A6ABC4" stroke-width="2" stroke-linecap="round" />
+											<path d="M3.5 3.5L5.29289 1.70711C5.68342 1.31658 6.31658 1.31658 6.70711 1.70711L8.5 3.5"
+												stroke="#A6ABC4" stroke-width="2" stroke-linecap="round" />
+											<path d="M11 6C11 8.76142 8.76142 11 6 11C3.23858 11 1 8.76142 1 6" stroke="#A6ABC4"
+												stroke-width="2" stroke-linecap="round" />
+										</svg>
+
+										upload Sample
+									</div>
+								</div>
+
+							</div>
 							<div class="tab-nav-body__item" data-tabbody="parsedlogs"></div>
 
 						</div>
@@ -112,6 +129,7 @@
 
 	<script>
 		(function () {
+
 			var schema;
 			if (window.location.href.match('[?&]schema=([^&]+)')) {
 				try {
@@ -130,14 +148,26 @@
 							"type": "object",
 							"oneOf": [
 								{
-									"additionalProperties": false,
 									"title": "convert",
+									"required": [
+										"convert"
+									],
 									"properties": {
 										"convert": {
 											"type": "object",
+											"required": [
+												"config"
+											],
+											"title": " ",
 											"properties": {
 												"config": {
+													"title": " ",
 													"type": "object",
+													"required": [
+														"path",
+														"paths",
+														"type"
+													],
 													"properties": {
 														"path": {
 															"type": "string"
@@ -160,35 +190,56 @@
 															]
 														}
 													}
+												},
+												"onFailure": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
+													}
+												},
+												"onSuccess": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
+													}
 												}
 											}
 										}
 									}
 								},
 								{
-									"additionalProperties": false,
 									"title": "userAgent",
+									"required": [
+										"userAgent"
+									],
 									"properties": {
 										"userAgent": {
 											"type": "object",
+											"required": [
+												"config"
+											],
+											"title": " ",
 											"properties": {
 												"config": {
+													"title": " ",
 													"type": "object",
+													"required": [
+														"field",
+														"targetField",
+														"prefix"
+													],
 													"properties": {
-														"targetField": {
+														"field": {
 															"type": "string"
 														},
-														"field": {
+														"targetField": {
 															"type": "string"
 														},
 														"prefix": {
 															"type": "string"
 														},
 														"truncatedInputLength": {
-															"type": [
-																"number",
-																"null"
-															]
+															"type": "number"
 														},
 														"tagOnTruncated": {
 															"type": "array",
@@ -197,27 +248,62 @@
 															}
 														}
 													}
+												},
+												"onFailure": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
+													}
+												},
+												"onSuccess": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
+													}
 												}
 											}
 										}
 									}
 								},
 								{
-									"additionalProperties": false,
 									"title": "json",
+									"required": [
+										"json"
+									],
 									"properties": {
 										"json": {
 											"type": "object",
+											"required": [
+												"config"
+											],
+											"title": " ",
 											"properties": {
 												"config": {
+													"title": " ",
 													"type": "object",
+													"required": [
+														"field",
+														"targetField"
+													],
 													"properties": {
-														"targetField": {
-															"type": "string"
-														},
 														"field": {
 															"type": "string"
+														},
+														"targetField": {
+															"type": "string"
 														}
+													}
+												},
+												"onFailure": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
+													}
+												},
+												"onSuccess": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
 													}
 												}
 											}
@@ -225,21 +311,38 @@
 									}
 								},
 								{
-									"additionalProperties": false,
 									"title": "docSize",
+									"required": [
+										"docSize"
+									],
 									"properties": {
 										"docSize": {
 											"type": "object",
+											"required": [
+												"config"
+											],
+											"title": " ",
 											"properties": {
 												"config": {
+													"title": " ",
 													"type": "object",
+													"required": [],
 													"properties": {
 														"targetField": {
-															"type": [
-																"string",
-																"null"
-															]
+															"type": "string"
 														}
+													}
+												},
+												"onFailure": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
+													}
+												},
+												"onSuccess": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
 													}
 												}
 											}
@@ -247,14 +350,24 @@
 									}
 								},
 								{
-									"additionalProperties": false,
 									"title": "addTag",
+									"required": [
+										"addTag"
+									],
 									"properties": {
 										"addTag": {
 											"type": "object",
+											"required": [
+												"config"
+											],
+											"title": " ",
 											"properties": {
 												"config": {
+													"title": " ",
 													"type": "object",
+													"required": [
+														"tags"
+													],
 													"properties": {
 														"tags": {
 															"type": "array",
@@ -263,28 +376,48 @@
 															}
 														}
 													}
+												},
+												"onFailure": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
+													}
+												},
+												"onSuccess": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
+													}
 												}
 											}
 										}
 									}
 								},
 								{
-									"additionalProperties": false,
 									"title": "ahoCorasick",
+									"required": [
+										"ahoCorasick"
+									],
 									"properties": {
 										"ahoCorasick": {
 											"type": "object",
+											"required": [
+												"config"
+											],
+											"title": " ",
 											"properties": {
 												"config": {
+													"title": " ",
 													"type": "object",
+													"required": [
+														"field",
+														"inputWords"
+													],
 													"properties": {
-														"targetField": {
-															"type": [
-																"string",
-																"null"
-															]
-														},
 														"field": {
+															"type": "string"
+														},
+														"targetField": {
 															"type": "string"
 														},
 														"inputWords": {
@@ -294,35 +427,48 @@
 															}
 														}
 													}
+												},
+												"onFailure": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
+													}
+												},
+												"onSuccess": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
+													}
 												}
 											}
 										}
 									}
 								},
 								{
-									"additionalProperties": false,
 									"title": "geoIp",
+									"required": [
+										"geoIp"
+									],
 									"properties": {
 										"geoIp": {
 											"type": "object",
+											"required": [
+												"config"
+											],
+											"title": " ",
 											"properties": {
 												"config": {
+													"title": " ",
 													"type": "object",
+													"required": [
+														"sourceField"
+													],
 													"properties": {
 														"sourceField": {
 															"type": "string"
 														},
 														"targetField": {
-															"type": [
-																"string",
-																"null"
-															]
-														},
-														"tagsOnSuccess": {
-															"type": "array",
-															"items": {
-																"type": "string"
-															}
+															"type": "string"
 														},
 														"properties": {
 															"type": "array",
@@ -344,7 +490,25 @@
 																	"dma_code"
 																]
 															}
+														},
+														"tagsOnSuccess": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
 														}
+													}
+												},
+												"onFailure": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
+													}
+												},
+												"onSuccess": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
 													}
 												}
 											}
@@ -352,14 +516,24 @@
 									}
 								},
 								{
-									"additionalProperties": false,
 									"title": "upperCase",
+									"required": [
+										"upperCase"
+									],
 									"properties": {
 										"upperCase": {
 											"type": "object",
+											"required": [
+												"config"
+											],
+											"title": " ",
 											"properties": {
 												"config": {
+													"title": " ",
 													"type": "object",
+													"required": [
+														"fields"
+													],
 													"properties": {
 														"fields": {
 															"type": "array",
@@ -368,29 +542,46 @@
 															}
 														}
 													}
+												},
+												"onFailure": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
+													}
+												},
+												"onSuccess": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
+													}
 												}
 											}
 										}
 									}
 								},
 								{
-									"additionalProperties": false,
 									"title": "grok",
+									"required": [
+										"grok"
+									],
 									"properties": {
 										"grok": {
 											"type": "object",
+											"required": [
+												"config"
+											],
+											"title": " ",
 											"properties": {
 												"config": {
+													"title": " ",
 													"type": "object",
+													"required": [
+														"field",
+														"patterns"
+													],
 													"properties": {
 														"field": {
 															"type": "string"
-														},
-														"tagsOnFailure": {
-															"type": "array",
-															"items": {
-																"type": "string"
-															}
 														},
 														"patterns": {
 															"type": "array",
@@ -405,11 +596,26 @@
 															}
 														},
 														"ignoreMissing": {
-															"type": [
-																"boolean",
-																"null"
-															]
+															"type": "boolean"
+														},
+														"tagsOnFailure": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
 														}
+													}
+												},
+												"onFailure": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
+													}
+												},
+												"onSuccess": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
 													}
 												}
 											}
@@ -417,15 +623,33 @@
 									}
 								},
 								{
-									"additionalProperties": false,
 									"title": "translate",
+									"required": [
+										"translate"
+									],
 									"properties": {
 										"translate": {
 											"type": "object",
+											"required": [
+												"config"
+											],
+											"title": " ",
 											"properties": {
 												"config": {
+													"title": " ",
 													"type": "object",
+													"required": [
+														"field",
+														"dictionary",
+														"fallback"
+													],
 													"properties": {
+														"field": {
+															"type": "string"
+														},
+														"targetField": {
+															"type": "string"
+														},
 														"dictionary": {
 															"type": "object",
 															"patternProperties": {
@@ -434,46 +658,69 @@
 																}
 															}
 														},
-														"targetField": {
-															"type": [
-																"string",
-																"null"
-															]
-														},
-														"field": {
-															"type": "string"
-														},
 														"fallback": {
 															"type": "string"
 														}
 													}
+												},
+												"onFailure": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
+													}
+												},
+												"onSuccess": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
+													}
 												}
 											}
 										}
 									}
 								},
 								{
-									"additionalProperties": false,
 									"title": "substring",
+									"required": [
+										"substring"
+									],
 									"properties": {
 										"substring": {
 											"type": "object",
+											"required": [
+												"config"
+											],
+											"title": " ",
 											"properties": {
 												"config": {
+													"title": " ",
 													"type": "object",
+													"required": [
+														"field",
+														"end"
+													],
 													"properties": {
 														"field": {
 															"type": "string"
 														},
-														"end": {
+														"begin": {
 															"type": "number"
 														},
-														"begin": {
-															"type": [
-																"number",
-																"null"
-															]
+														"end": {
+															"type": "number"
 														}
+													}
+												},
+												"onFailure": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
+													}
+												},
+												"onSuccess": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
 													}
 												}
 											}
@@ -481,21 +728,38 @@
 									}
 								},
 								{
-									"additionalProperties": false,
 									"title": "drop",
+									"required": [
+										"drop"
+									],
 									"properties": {
 										"drop": {
 											"type": "object",
+											"required": [
+												"config"
+											],
+											"title": " ",
 											"properties": {
 												"config": {
+													"title": " ",
 													"type": "object",
+													"required": [],
 													"properties": {
 														"percentage": {
-															"type": [
-																"number",
-																"null"
-															]
+															"type": "number"
 														}
+													}
+												},
+												"onFailure": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
+													}
+												},
+												"onSuccess": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
 													}
 												}
 											}
@@ -503,14 +767,25 @@
 									}
 								},
 								{
-									"additionalProperties": false,
 									"title": "split",
+									"required": [
+										"split"
+									],
 									"properties": {
 										"split": {
 											"type": "object",
+											"required": [
+												"config"
+											],
+											"title": " ",
 											"properties": {
 												"config": {
+													"title": " ",
 													"type": "object",
+													"required": [
+														"field",
+														"separator"
+													],
 													"properties": {
 														"field": {
 															"type": "string"
@@ -519,20 +794,44 @@
 															"type": "string"
 														}
 													}
+												},
+												"onFailure": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
+													}
+												},
+												"onSuccess": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
+													}
 												}
 											}
 										}
 									}
 								},
 								{
-									"additionalProperties": false,
 									"title": "rename",
+									"required": [
+										"rename"
+									],
 									"properties": {
 										"rename": {
 											"type": "object",
+											"required": [
+												"config"
+											],
+											"title": " ",
 											"properties": {
 												"config": {
+													"title": " ",
 													"type": "object",
+													"required": [
+														"from",
+														"to",
+														"renames"
+													],
 													"properties": {
 														"from": {
 															"type": "string"
@@ -549,39 +848,17 @@
 															}
 														}
 													}
-												}
-											}
-										}
-									}
-								},
-								{
-									"additionalProperties": false,
-									"title": "urlDecode",
-									"properties": {
-										"urlDecode": {
-											"type": "object",
-											"properties": {
-												"config": {
-													"type": "object",
-													"properties": {
-														"charset": {
-															"type": [
-																"string",
-																"null"
-															]
-														},
-														"allFields": {
-															"type": [
-																"boolean",
-																"null"
-															]
-														},
-														"field": {
-															"type": [
-																"string",
-																"null"
-															]
-														}
+												},
+												"onFailure": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
+													}
+												},
+												"onSuccess": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
 													}
 												}
 											}
@@ -589,14 +866,69 @@
 									}
 								},
 								{
-									"additionalProperties": false,
+									"title": "urlDecode",
+									"required": [
+										"urlDecode"
+									],
+									"properties": {
+										"urlDecode": {
+											"type": "object",
+											"required": [
+												"config"
+											],
+											"title": " ",
+											"properties": {
+												"config": {
+													"title": " ",
+													"type": "object",
+													"required": [],
+													"properties": {
+														"allFields": {
+															"type": "boolean"
+														},
+														"charset": {
+															"type": "string"
+														},
+														"field": {
+															"type": "string"
+														}
+													}
+												},
+												"onFailure": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
+													}
+												},
+												"onSuccess": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
+													}
+												}
+											}
+										}
+									}
+								},
+								{
 									"title": "strip",
+									"required": [
+										"strip"
+									],
 									"properties": {
 										"strip": {
 											"type": "object",
+											"required": [
+												"config"
+											],
+											"title": " ",
 											"properties": {
 												"config": {
+													"title": " ",
 													"type": "object",
+													"required": [
+														"fields"
+													],
 													"properties": {
 														"fields": {
 															"type": "array",
@@ -605,20 +937,42 @@
 															}
 														}
 													}
+												},
+												"onFailure": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
+													}
+												},
+												"onSuccess": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
+													}
 												}
 											}
 										}
 									}
 								},
 								{
-									"additionalProperties": false,
 									"title": "removeTag",
+									"required": [
+										"removeTag"
+									],
 									"properties": {
 										"removeTag": {
 											"type": "object",
+											"required": [
+												"config"
+											],
+											"title": " ",
 											"properties": {
 												"config": {
+													"title": " ",
 													"type": "object",
+													"required": [
+														"tags"
+													],
 													"properties": {
 														"tags": {
 															"type": "array",
@@ -627,29 +981,49 @@
 															}
 														}
 													}
+												},
+												"onFailure": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
+													}
+												},
+												"onSuccess": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
+													}
 												}
 											}
 										}
 									}
 								},
 								{
-									"additionalProperties": false,
 									"title": "anonymize",
+									"required": [
+										"anonymize"
+									],
 									"properties": {
 										"anonymize": {
 											"type": "object",
+											"required": [
+												"config"
+											],
+											"title": " ",
 											"properties": {
 												"config": {
+													"title": " ",
 													"type": "object",
+													"required": [
+														"fields",
+														"key"
+													],
 													"properties": {
 														"fields": {
 															"type": "array",
 															"items": {
 																"type": "string"
 															}
-														},
-														"key": {
-															"type": "string"
 														},
 														"algorithm": {
 															"type": "string",
@@ -660,7 +1034,22 @@
 																"SHA512",
 																"MD5"
 															]
+														},
+														"key": {
+															"type": "string"
 														}
+													}
+												},
+												"onFailure": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
+													}
+												},
+												"onSuccess": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
 													}
 												}
 											}
@@ -668,14 +1057,26 @@
 									}
 								},
 								{
-									"additionalProperties": false,
 									"title": "gsub",
+									"required": [
+										"gsub"
+									],
 									"properties": {
 										"gsub": {
 											"type": "object",
+											"required": [
+												"config"
+											],
+											"title": " ",
 											"properties": {
 												"config": {
+													"title": " ",
 													"type": "object",
+													"required": [
+														"field",
+														"pattern",
+														"replacement"
+													],
 													"properties": {
 														"field": {
 															"type": "string"
@@ -687,20 +1088,43 @@
 															"type": "string"
 														}
 													}
+												},
+												"onFailure": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
+													}
+												},
+												"onSuccess": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
+													}
 												}
 											}
 										}
 									}
 								},
 								{
-									"additionalProperties": false,
 									"title": "removeField",
+									"required": [
+										"removeField"
+									],
 									"properties": {
 										"removeField": {
 											"type": "object",
+											"required": [
+												"config"
+											],
+											"title": " ",
 											"properties": {
 												"config": {
+													"title": " ",
 													"type": "object",
+													"required": [
+														"path",
+														"fields"
+													],
 													"properties": {
 														"path": {
 															"type": "string"
@@ -712,21 +1136,51 @@
 															}
 														}
 													}
+												},
+												"onFailure": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
+													}
+												},
+												"onSuccess": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
+													}
 												}
 											}
 										}
 									}
 								},
 								{
-									"additionalProperties": false,
 									"title": "xml",
+									"required": [
+										"xml"
+									],
 									"properties": {
 										"xml": {
 											"type": "object",
+											"required": [
+												"config"
+											],
+											"title": " ",
 											"properties": {
 												"config": {
+													"title": " ",
 													"type": "object",
+													"required": [
+														"field",
+														"targetField",
+														"xpath"
+													],
 													"properties": {
+														"field": {
+															"type": "string"
+														},
+														"targetField": {
+															"type": "string"
+														},
 														"xpath": {
 															"type": "object",
 															"patternProperties": {
@@ -735,18 +1189,21 @@
 																}
 															}
 														},
-														"targetField": {
-															"type": "string"
-														},
-														"field": {
-															"type": "string"
-														},
 														"storeXml": {
-															"type": [
-																"boolean",
-																"null"
-															]
+															"type": "boolean"
 														}
+													}
+												},
+												"onFailure": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
+													}
+												},
+												"onSuccess": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
 													}
 												}
 											}
@@ -754,40 +1211,40 @@
 									}
 								},
 								{
-									"additionalProperties": false,
 									"title": "lowerCase",
+									"required": [
+										"lowerCase"
+									],
 									"properties": {
 										"lowerCase": {
 											"type": "object",
+											"required": [
+												"config"
+											],
+											"title": " ",
 											"properties": {
 												"config": {
+													"title": " ",
 													"type": "object",
+													"required": [
+														"field"
+													],
 													"properties": {
 														"field": {
 															"type": "string"
 														}
 													}
-												}
-											}
-										}
-									}
-								},
-								{
-									"additionalProperties": false,
-									"title": "deDot",
-									"properties": {
-										"deDot": {
-											"type": "object",
-											"properties": {
-												"config": {
-													"type": "object",
-													"properties": {
-														"separator": {
-															"type": [
-																"string",
-																"null"
-															]
-														}
+												},
+												"onFailure": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
+													}
+												},
+												"onSuccess": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
 													}
 												}
 											}
@@ -795,41 +1252,88 @@
 									}
 								},
 								{
-									"additionalProperties": false,
+									"title": "deDot",
+									"required": [
+										"deDot"
+									],
+									"properties": {
+										"deDot": {
+											"type": "object",
+											"required": [
+												"config"
+											],
+											"title": " ",
+											"properties": {
+												"config": {
+													"title": " ",
+													"type": "object",
+													"required": [],
+													"properties": {
+														"separator": {
+															"type": "string"
+														}
+													}
+												},
+												"onFailure": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
+													}
+												},
+												"onSuccess": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
+													}
+												}
+											}
+										}
+									}
+								},
+								{
 									"title": "csv",
+									"required": [
+										"csv"
+									],
 									"properties": {
 										"csv": {
 											"type": "object",
+											"required": [
+												"config"
+											],
+											"title": " ",
 											"properties": {
 												"config": {
+													"title": " ",
 													"type": "object",
+													"required": [
+														"targetField",
+														"convert"
+													],
 													"properties": {
-														"skipEmptyColumns": {
-															"type": [
-																"boolean",
-																"null"
-															]
-														},
-														"quoteChar": {
-															"type": [
-																"string",
-																"null"
-															]
+														"field": {
+															"type": "string"
 														},
 														"targetField": {
 															"type": "string"
 														},
-														"field": {
-															"type": [
-																"string",
-																"null"
-															]
+														"separator": {
+															"type": "string"
+														},
+														"quoteChar": {
+															"type": "string"
 														},
 														"columns": {
 															"type": "array",
 															"items": {
 																"type": "string"
 															}
+														},
+														"autoGenerateColumnNames": {
+															"type": "boolean"
+														},
+														"skipEmptyColumns": {
+															"type": "boolean"
 														},
 														"convert": {
 															"type": "object",
@@ -838,19 +1342,19 @@
 																	"type": "string"
 																}
 															}
-														},
-														"autoGenerateColumnNames": {
-															"type": [
-																"boolean",
-																"null"
-															]
-														},
-														"separator": {
-															"type": [
-																"string",
-																"null"
-															]
 														}
+													}
+												},
+												"onFailure": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
+													}
+												},
+												"onSuccess": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
 													}
 												}
 											}
@@ -858,21 +1362,44 @@
 									}
 								},
 								{
-									"additionalProperties": false,
 									"title": "math",
+									"required": [
+										"math"
+									],
 									"properties": {
 										"math": {
 											"type": "object",
+											"required": [
+												"config"
+											],
+											"title": " ",
 											"properties": {
 												"config": {
+													"title": " ",
 													"type": "object",
+													"required": [
+														"targetField",
+														"expression"
+													],
 													"properties": {
-														"expression": {
-															"type": "string"
-														},
 														"targetField": {
 															"type": "string"
+														},
+														"expression": {
+															"type": "string"
 														}
+													}
+												},
+												"onFailure": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
+													}
+												},
+												"onSuccess": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
 													}
 												}
 											}
@@ -880,81 +1407,87 @@
 									}
 								},
 								{
-									"additionalProperties": false,
 									"title": "kv",
+									"required": [
+										"kv"
+									],
 									"properties": {
 										"kv": {
 											"type": "object",
+											"required": [
+												"config"
+											],
+											"title": " ",
 											"properties": {
 												"config": {
+													"title": " ",
 													"type": "object",
+													"required": [
+														"field",
+														"targetField",
+														"includeKeys",
+														"excludeKeys",
+														"trim",
+														"trimKey"
+													],
 													"properties": {
-														"excludeKeys": {
-															"type": "array",
-															"items": {
-																"type": "string"
-															}
-														},
-														"maxKeyLength": {
-															"type": [
-																"number",
-																"null"
-															]
-														},
-														"targetField": {
-															"type": "string"
-														},
-														"trim": {
-															"type": "string"
-														},
 														"field": {
 															"type": "string"
 														},
-														"prefix": {
-															"type": [
-																"string",
-																"null"
-															]
-														},
-														"valueSplit": {
-															"type": [
-																"string",
-																"null"
-															]
-														},
-														"fieldSplit": {
-															"type": [
-																"string",
-																"null"
-															]
-														},
-														"trimKey": {
+														"targetField": {
 															"type": "string"
-														},
-														"allowDuplicateValues": {
-															"type": [
-																"boolean",
-																"null"
-															]
-														},
-														"recursive": {
-															"type": [
-																"boolean",
-																"null"
-															]
-														},
-														"includeBrackets": {
-															"type": [
-																"boolean",
-																"null"
-															]
 														},
 														"includeKeys": {
 															"type": "array",
 															"items": {
 																"type": "string"
 															}
+														},
+														"excludeKeys": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														},
+														"fieldSplit": {
+															"type": "string"
+														},
+														"valueSplit": {
+															"type": "string"
+														},
+														"allowDuplicateValues": {
+															"type": "boolean"
+														},
+														"includeBrackets": {
+															"type": "boolean"
+														},
+														"prefix": {
+															"type": "string"
+														},
+														"recursive": {
+															"type": "boolean"
+														},
+														"trim": {
+															"type": "string"
+														},
+														"trimKey": {
+															"type": "string"
+														},
+														"maxKeyLength": {
+															"type": "number"
 														}
+													}
+												},
+												"onFailure": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
+													}
+												},
+												"onSuccess": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
 													}
 												}
 											}
@@ -962,39 +1495,57 @@
 									}
 								},
 								{
-									"additionalProperties": false,
 									"title": "date",
+									"required": [
+										"date"
+									],
 									"properties": {
 										"date": {
 											"type": "object",
+											"required": [
+												"config"
+											],
+											"title": " ",
 											"properties": {
 												"config": {
+													"title": " ",
 													"type": "object",
+													"required": [
+														"field",
+														"formats",
+														"timeZone"
+													],
 													"properties": {
+														"field": {
+															"type": "string"
+														},
+														"targetField": {
+															"type": "string"
+														},
 														"formats": {
 															"type": "array",
 															"items": {
 																"type": "string"
 															}
 														},
-														"targetField": {
-															"type": [
-																"string",
-																"null"
-															]
-														},
-														"field": {
-															"type": "string"
-														},
 														"timeZone": {
 															"type": "string"
 														},
 														"outputFormat": {
-															"type": [
-																"string",
-																"null"
-															]
+															"type": "string"
 														}
+													}
+												},
+												"onFailure": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
+													}
+												},
+												"onSuccess": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
 													}
 												}
 											}
@@ -1002,14 +1553,25 @@
 									}
 								},
 								{
-									"additionalProperties": false,
 									"title": "appendList",
+									"required": [
+										"appendList"
+									],
 									"properties": {
 										"appendList": {
 											"type": "object",
+											"required": [
+												"config"
+											],
+											"title": " ",
 											"properties": {
 												"config": {
+													"title": " ",
 													"type": "object",
+													"required": [
+														"path",
+														"values"
+													],
 													"properties": {
 														"path": {
 															"type": "string"
@@ -1021,20 +1583,43 @@
 															}
 														}
 													}
+												},
+												"onFailure": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
+													}
+												},
+												"onSuccess": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
+													}
 												}
 											}
 										}
 									}
 								},
 								{
-									"additionalProperties": false,
 									"title": "addField",
+									"required": [
+										"addField"
+									],
 									"properties": {
 										"addField": {
 											"type": "object",
+											"required": [
+												"config"
+											],
+											"title": " ",
 											"properties": {
 												"config": {
+													"title": " ",
 													"type": "object",
+													"required": [
+														"path",
+														"value"
+													],
 													"properties": {
 														"path": {
 															"type": "string"
@@ -1048,7 +1633,226 @@
 															]
 														}
 													}
+												},
+												"onFailure": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
+													}
+												},
+												"onSuccess": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
+													}
 												}
+											}
+										}
+									}
+								},
+								{
+									"additionalProperties": false,
+									"title": "if",
+									"required": [
+										"if"
+									],
+									"properties": {
+										"if": {
+											"type": "object",
+											"required": [
+												"condition",
+												"then"
+											],
+											"title": " ",
+											"properties": {
+												"condition": {
+													"type": "object",
+													"$ref": "#/definitions/Condition"
+												},
+												"then": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
+													}
+												},
+												"else": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/Step"
+													}
+												}
+											}
+										}
+									}
+								}
+							]
+						},
+						"Condition": {
+							"type": "object",
+							"oneOf": [
+								{
+									"additionalProperties": false,
+									"title": "not",
+									"required": [
+										"not"
+									],
+									"properties": {
+										"not": {
+											"title": " ",
+											"type": "array",
+											"items": {
+												"$ref": "#/definitions/Condition"
+											}
+										}
+									}
+								},
+								{
+									"additionalProperties": false,
+									"title": "or",
+									"required": [
+										"or"
+									],
+									"properties": {
+										"or": {
+											"title": " ",
+											"type": "array",
+											"items": {
+												"$ref": "#/definitions/Condition"
+											}
+										}
+									}
+								},
+								{
+									"additionalProperties": false,
+									"title": "hasValue",
+									"required": [
+										"hasValue"
+									],
+									"properties": {
+										"hasValue": {
+											"title": " ",
+											"type": "object",
+											"properties": {
+												"field": {
+													"type": "string"
+												},
+												"possibleValues": {
+													"type": "array",
+													"items": {
+														"type": [
+															"string",
+															"boolean",
+															"number",
+															"boolean"
+														]
+													}
+												}
+											}
+										}
+									}
+								},
+								{
+									"additionalProperties": false,
+									"title": "mathComparator",
+									"required": [
+										"mathComparator"
+									],
+									"properties": {
+										"mathComparator": {
+											"title": " ",
+											"type": "object",
+											"properties": {
+												"field": {
+													"type": "string"
+												},
+												"gte": {
+													"type": "number"
+												},
+												"gt": {
+													"type": "number"
+												},
+												"lte": {
+													"type": "number"
+												},
+												"lt": {
+													"type": "number"
+												}
+											}
+										}
+									}
+								},
+								{
+									"additionalProperties": false,
+									"title": "in",
+									"required": [
+										"in"
+									],
+									"properties": {
+										"in": {
+											"title": " ",
+											"type": "object",
+											"properties": {
+												"path": {
+													"type": "string"
+												},
+												"value": {
+													"type": "string"
+												}
+											}
+										}
+									}
+								},
+								{
+									"additionalProperties": false,
+									"title": "fieldType",
+									"required": [
+										"fieldType"
+									],
+									"properties": {
+										"fieldType": {
+											"title": " ",
+											"type": "object",
+											"properties": {
+												"path": {
+													"type": "string"
+												},
+												"type": {
+													"type": "string"
+												}
+											}
+										}
+									}
+								},
+								{
+									"additionalProperties": false,
+									"title": "exists",
+									"required": [
+										"exists"
+									],
+									"properties": {
+										"exists": {
+											"title": " ",
+											"type": "object",
+											"properties": {
+												"field": {
+													"type": "string"
+												}
+											}
+										}
+									}
+								},
+								{
+									"additionalProperties": false,
+									"title": "and",
+									"required": [
+										"and"
+									],
+									"properties": {
+										"and": {
+											"title": " ",
+											"type": "array",
+											"items": {
+												"$ref": "#/definitions/Condition"
 											}
 										}
 									}
@@ -1057,6 +1861,9 @@
 						}
 					},
 					"type": "object",
+					"required": [
+						"steps"
+					],
 					"properties": {
 						"steps": {
 							"type": "array",
@@ -1079,7 +1886,7 @@
 
 			// Buttons
 			var $set_schema_button = document.getElementById('setschema');
-			// var $set_value_button = document.getElementById('setvalue');
+			var $set_value_button = document.getElementById('setvalue');
 
 			var jsoneditor;
 
@@ -1106,7 +1913,10 @@
 			var reload = function (keep_value) {
 				var startval = (jsoneditor && keep_value) ? jsoneditor.getValue() : window.startval;
 				window.startval = undefined;
-
+				console.log(keep_value);
+				startval = {
+					"steps": [],
+				}
 				if (jsoneditor) jsoneditor.destroy();
 				jsoneditor = new JSONEditor($editor, {
 					schema: schema,
@@ -1138,9 +1948,9 @@
 			$output.value = '';
 
 			// When the 'update form' button is clicked, set the editor's value
-			// $set_value_button.addEventListener('click', function () {
-			// 	jsoneditor.setValue(JSON.parse($output.value));
-			// });
+			$set_value_button.addEventListener('click', function () {
+				jsoneditor.setValue(JSON.parse($output.value));
+			});
 
 			// Update the schema when the button is clicked
 			// $set_schema_button.addEventListener('click', function () {
@@ -1203,17 +2013,21 @@
 
 				if (!no_reload) reload(true);
 			};
+			// JSONEditor.defaults.options.display_required_only = ;
+
 			JSONEditor.defaults.options.max_depth = 0;
 			JSONEditor.defaults.options.prompt_before_delete = true;
 			JSONEditor.defaults.options.use_default_values = true;
-			JSONEditor.defaults.options.required_by_default = true;
-			JSONEditor.defaults.options.disable_edit_json = true;
-			JSONEditor.defaults.options.disable_array_delete_last_row = true;
 			JSONEditor.defaults.options.array_controls_top = true;
-			JSONEditor.defaults.options.disable_properties = true;
+			JSONEditor.defaults.options.disable_edit_json = true;
+			JSONEditor.defaults.options.disable_array_reorder = true;
 			JSONEditor.defaults.options.disable_collapse = true;
+			JSONEditor.defaults.options.disable_properties = true;
+			JSONEditor.defaults.options.no_additional_properties = true;
+			JSONEditor.defaults.options.show_opt_in = true;
+			JSONEditor.defaults.options.required_by_default = true;
+			JSONEditor.defaults.options.disable_array_delete_last_row = true;
 
-			// disable_collapse
 
 			// var refreshBooleanOptions = function (no_reload) {
 			// 	var boolean_options = document.getElementById('boolean_options').children;

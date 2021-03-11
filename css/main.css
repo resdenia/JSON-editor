@@ -140,7 +140,6 @@ button.btn.btn-default {
   border: 2px solid;
   border-radius: 5px !important;
   padding: 11px 9px;
-  margin-bottom: 20px;
 }
 button.btn.btn-default .fa {
   margin-right: 6px;
@@ -156,8 +155,34 @@ button.btn.btn-default {
 .btn-group button:first-child {
   margin-right: 10px;
 }
+.tab-nav-item p {
+  pointer-events: none;
+}
 /* main section */
 /* right section */
+.tab-nav-body__item {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 15px;
+  align-items: center;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+
+  color: #a6abc4;
+}
+.uploadView {
+  height: 108px;
+  border: 2px dashed;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 0px 10px;
+  text-align: center;
+  padding-top: 45px;
+}
+.tab-nav-body__item input {
+  visibility: hidden;
+}
 .tab-nav-contaier {
   margin-top: 43px;
 }
@@ -165,6 +190,13 @@ button.btn.btn-default {
   min-height: 140px;
   background: #e8edf8;
   border-radius: 0px 0px 5px 5px;
+}
+.tab-nav-body__item.active {
+  display: block;
+}
+
+.tab-nav-body__item {
+  display: none;
 }
 
 .tab-nav-controller {
