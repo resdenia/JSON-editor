@@ -13,7 +13,9 @@ body {
 .row .row h3 {
   display: flex;
 }
-
+span.btn-group.je-object__controls {
+  display: none !important;
+}
 .row
   .row
   button.btn.btn-default.json-editor-btn-collapse.json-editor-btntype-toggle {
